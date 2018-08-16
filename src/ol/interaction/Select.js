@@ -254,15 +254,12 @@ class Select extends Interaction {
      * @type {Object<number, module:ol/layer/Layer>}
      */
     this.featureLayerAssociation_ = {};
-
-    if (this.featureOverlay_) {
-      const features = this.featureOverlay_.getSource().getFeaturesCollection();
-      listen(features, CollectionEventType.ADD,
-        this.addFeature_, this);
-      listen(features, CollectionEventType.REMOVE,
-        this.removeFeature_, this);
-    }
-
+  
+    const features = this.featureOverlay_.getSource().getFeaturesCollection();
+    listen(features, CollectionEventType.ADD,
+      this.addFeature_, this);
+    listen(features, CollectionEventType.REMOVE,
+      this.removeFeature_, this);
   }
 
   /**
